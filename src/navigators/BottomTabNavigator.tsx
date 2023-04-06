@@ -12,22 +12,13 @@ const BottomTabNavigator = () => {
   return (
     <Tab.Navigator
       screenOptions={{
-        headerStyle: {
-          backgroundColor: theme == "dark" ? "#212121" : "white",
-        },
-        headerRight: () => (
-          <Ionicons name="add-circle-outline" size={30} color="white" />
-        ),
-        headerRightContainerStyle: {
-          justifyContent: "center",
-          paddingRight: 10,
-        },
-        headerTintColor: theme == "dark" ? "white" : "black",
+        headerShown: false,
         tabBarActiveTintColor: theme == "dark" ? "#60bf4b" : "white",
         tabBarShowLabel: false,
         tabBarStyle: {
-          height: 50,
           backgroundColor: theme == "dark" ? "#212121" : "white",
+          borderTopWidth: 0,
+          height: 70,
         },
       }}>
       <Tab.Screen
