@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "807281049128",
+    "project_id": "expo-chat-app-viz",
+    "storage_bucket": "expo-chat-app-viz.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:807281049128:android:f31af3835e5c8f83f6ff1d",
+        "android_client_info": {
+          "package_name": "com.personal.firebasechat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "807281049128-45enfnffrg208pt6epdqtcssvpog0jhs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.personal.firebasechat",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "807281049128-p9ve1vicirogq8l1cgk5n5ahp23f6l87.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBi9kniwSdVBW-KCxeefx69utc49fwK-Lk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "807281049128-p9ve1vicirogq8l1cgk5n5ahp23f6l87.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
