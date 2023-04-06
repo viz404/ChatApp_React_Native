@@ -4,7 +4,7 @@ import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import auth from "@react-native-firebase/auth";
 import {useDispatch, useSelector} from "react-redux";
 
-import {Signin, UpdateInfo, Splash} from "../screens";
+import {Signin, UpdateInfo, Splash, NewChat} from "../screens";
 import {
   signinUserAction,
   signoutUserAction,
@@ -33,8 +33,6 @@ const StackNavigator = () => {
     return subscriber;
   }, []);
 
-  console.log(user);
-
   return (
     <Stack.Navigator
       screenOptions={{
@@ -47,10 +45,13 @@ const StackNavigator = () => {
       ) : !user.displayName ? (
         <Stack.Screen name="UpdateInfo" component={UpdateInfo} />
       ) : (
-        <Stack.Screen
-          name="BottomTabNavigator"
-          component={BottomTabNavigator}
-        />
+        <>
+          <Stack.Screen
+            name="BottomTabNavigator"
+            component={BottomTabNavigator}
+          />
+          <Stack.Screen name="NewChat" component={NewChat} />
+        </>
       )}
     </Stack.Navigator>
   );
