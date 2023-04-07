@@ -23,6 +23,7 @@ const backgroudImageDark = require("../../assets/images/update-profile-dark.png"
 const backgroudImageLight = require("../../assets/images/update-profile-light.png");
 
 import {dark, light} from "./stylesUpdateInfo";
+import addNewUser from "../../firebaseHelpers/addNewUser";
 
 const UpdateInfo = () => {
   const [displayName, setDisplayName] = useState("");
@@ -32,11 +33,12 @@ const UpdateInfo = () => {
     .split(" ")
     .join("+")}&rounded=true&size=128`;
 
-  const {uid} = useSelector((store: any) => store.user);
+  const {
+    user,
+    theme: {theme},
+  } = useSelector((store: any) => store);
 
   const dispatch = useDispatch();
-
-  let theme = "dark";
 
   const styles = theme == "dark" ? dark : light;
 
@@ -66,15 +68,24 @@ const UpdateInfo = () => {
       let downloadUrl = photo?.uri || defaultImage;
 
       if (photo) {
-        downloadUrl = await uploadProfilePicture(photo.uri, uid);
+        downloadUrl = await uploadProfilePicture(photo.uri, user.uid);
       }
 
-      await updateProfileInfo(displayName, downloadUrl);
+      // await updateProfileInfo(displayName, downloadUrl);
 
       const userInfoPayload = {
+        ...user,
         displayName,
         photoURL: downloadUrl,
       };
+
+      delete userInfoPayload.signedIn;
+
+      let response = await addNewUser(userInfoPayload);
+
+      if (response == false) {
+        throw new Error("Registration failed");
+      }
 
       dispatch(updateUserInfoAction(userInfoPayload));
     } catch (error: any) {

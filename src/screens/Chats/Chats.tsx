@@ -29,6 +29,7 @@ const Chats = ({navigation}: any) => {
   };
 
   const signout = () => {
+    // dispatch signout
     auth().signOut();
   };
 

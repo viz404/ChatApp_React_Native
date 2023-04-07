@@ -5,12 +5,14 @@ import {
   TouchableOpacity,
   Image,
   ScrollView,
+  Alert,
 } from "react-native";
 import React, {useState} from "react";
 
 import auth from "@react-native-firebase/auth";
 
 import {dark, light} from "./stylesSignin";
+import {useSelector} from "react-redux";
 
 const logo = require("../../assets/images/chat-logo.png");
 
@@ -19,15 +21,21 @@ const Signin = () => {
   const [confirm, setConfirm] = useState<any>(null);
   const [code, setCode] = useState("");
 
-  let theme = "dark";
+  const {theme} = useSelector((store: any) => store.theme);
 
   const styles = theme == "dark" ? dark : light;
 
   const sendOTP = async () => {
-    const confirmation = await auth().signInWithPhoneNumber(
-      `+91 ${phoneNumber}`,
-    );
-    setConfirm(confirmation);
+    try {
+      const confirmation = await auth().signInWithPhoneNumber(
+        `+91 ${phoneNumber}`,
+      );
+      setConfirm(confirmation);
+    } catch (error) {
+      console.log("Error in Signin.tsx");
+      console.log(error);
+      Alert.alert("Error", "Failed to send OTP");
+    }
   };
 
   const confirmCode = async () => {
@@ -37,7 +45,7 @@ const Signin = () => {
       setCode("");
       setConfirm(null);
     } catch (error) {
-      console.log("Invalid code.");
+      console.log(error);
     }
   };
 
