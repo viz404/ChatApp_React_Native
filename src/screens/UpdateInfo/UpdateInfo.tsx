@@ -71,8 +71,6 @@ const UpdateInfo = () => {
         downloadUrl = await uploadProfilePicture(photo.uri, user.uid);
       }
 
-      // await updateProfileInfo(displayName, downloadUrl);
-
       const userInfoPayload = {
         ...user,
         displayName,

@@ -21,9 +21,6 @@ const StackNavigator = () => {
   const storeUser = store.user;
   const {theme} = store.theme;
 
-  console.log("storeUser");
-  console.log(storeUser);
-
   const dispatch = useDispatch();
 
   const onAuthStateChanged = async (user: any) => {
