@@ -15,6 +15,7 @@ import ReactNativeContacts from "react-native-contacts";
 import EvilIcons from "react-native-vector-icons/EvilIcons";
 
 import {dark, light} from "./stylesContacts";
+import {useSelector} from "react-redux";
 
 const Contacts = ({onPress}: any) => {
   const [contacts, setContacts] = useState<any>([]);
@@ -24,7 +25,7 @@ const Contacts = ({onPress}: any) => {
 
   const timerRef = useRef<any>();
 
-  let theme = "dark";
+  const {theme} = useSelector((store: any) => store.theme);
 
   const styles = theme == "dark" ? dark : light;
 
